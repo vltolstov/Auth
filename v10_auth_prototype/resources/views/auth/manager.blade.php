@@ -3,6 +3,10 @@
 @section('content')
 
     <p>Личный кабинет (<a href="/logout">Выход</a>)</p>
-    <a href="/manager/roles">Управление ролями пользователей</a>
+    <ul>
+        <li><a href="{{ route('user.edit', auth()->user()->id) }}">Редактирование своего профиля</a></li>
+        <li><a href="{{ route('user.index') }}">Управление пользователями</a></li>
+        <li><a href="{{ route('roles.index') }}">Управление ролями пользователей</a></li>
+    </ul>
 
 @endsection

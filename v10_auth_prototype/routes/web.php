@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::view('/manager', 'auth.manager')->middleware('auth')->name('manager');
+
+Route::resource('/manager/user', UserController::class)->only([
+    'index', 'update', 'edit'
+])->middleware('auth');
+

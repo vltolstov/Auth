@@ -15,6 +15,4 @@ Route::name('user.')->group(function (){
 
     Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
-    Route::view('/manager', 'auth.manager')->middleware('auth')->name('manager');
-
 });

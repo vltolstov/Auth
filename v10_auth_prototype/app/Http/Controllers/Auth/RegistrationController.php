@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ class RegistrationController extends Controller
             ]);
         }
 
-        $validationData['role_id'] = '0';
+        $validationData['role_id'] = Role::select('id')->where('name', 'user')->value('id');
 
         $user = User::create($validationData);
         if($user){

@@ -25,17 +25,24 @@
 
     <h4>Доступные роли</h4>
     @if(isset($roles))
-        <ul>
-        @foreach($roles as $role)
-            <li>{{$role->name}}
-                <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                    <button type="submit">Удалить</button>
-                </form>
-            </li>
-        @endforeach
-        </ul>
+        <table>
+            <tr>
+                <th>Роль</th>
+                <th></th>
+            </tr>
+            @foreach($roles as $role)
+                <tr>
+                    <td>{{$role->name}}</td>
+                    <td>
+                        <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     @else
         <p>Роли не найдены</p>
     @endif

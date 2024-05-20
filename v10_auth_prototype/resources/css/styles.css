@@ -12,3 +12,7 @@ p {
 .container p {
     text-align: center;
 }
+
+table {
+    width: 100%;
+}

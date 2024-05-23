@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::check()){
-            return redirect(route('user.manager'));
+            return redirect(route('manager'));
         }
         return view('auth.login');
     }
@@ -19,14 +19,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if(Auth::check()){
-            redirect(route('user.manager'));
+            redirect(route('manager'));
         }
 
         $data = $request->only('email', 'password');
 
         if(Auth::attempt($data, $remember = true)){
             $request->session()->regenerate();
-            redirect(route('user.manager'));
+            redirect(route('manager'));
         }
 
         return redirect(route('user.login'));

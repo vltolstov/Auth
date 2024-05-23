@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return redirect(route('user.manager'));
+            return redirect(route('manager'));
         }
         return view('auth.registration');
     }
@@ -21,7 +21,7 @@ class RegistrationController extends Controller
     public function save(Request $request)
     {
         if(Auth::check()){
-            return redirect(route('user.manager'));
+            return redirect(route('manager'));
         }
 
         $validationData = $request->validate([
@@ -42,7 +42,7 @@ class RegistrationController extends Controller
         $user = User::create($validationData);
         if($user){
             Auth::login($user);
-            return redirect(route('user.manager'));
+            return redirect(route('manager'));
         }
 
         return redirect(route('user.registration'))->withErrors([
